@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -23,8 +21,6 @@ class BuyCarsAfricaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDesktop = !kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS);
-
     return MaterialApp(
       title: 'BuyCars.Africa',
       debugShowCheckedModeBanner: false,
@@ -43,7 +39,15 @@ class BuyCarsAfricaApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: isDesktop ? const DealershipPortalScreen() : const HomeScreen(),
+      
+      // Default route for all users (Web, Mobile, Desktop)
+      initialRoute: '/',
+      
+      // Map URL paths to their respective screens
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/admin': (context) => const DealershipPortalScreen(),
+      },
     );
   }
 }
