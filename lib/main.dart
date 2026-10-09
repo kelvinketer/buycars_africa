@@ -28,11 +28,18 @@ class BuyCarsAfricaApp extends StatelessWidget {
     return MaterialApp(
       title: 'BuyCars.Africa',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF1B5E20),
-          primary: const Color(0xFF1B5E20),
-          secondary: const Color(0xFF0D47A1),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF121212),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF00E676), // Electric Emerald Accent
+          secondary: Color(0xFF00E676),
+          surface: Color(0xFF232527), // Elevated Card Surface
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF121212),
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
         ),
         useMaterial3: true,
       ),
